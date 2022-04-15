@@ -6,25 +6,25 @@ import numpy as np
 import matplotlib.pyplot as plt
 vecsin = np.vectorize(math.sin)
 f = 50
-t = np.linspace(0, 10, 50)
+t = np.linspace(-50, 10, 50)
 
 def show_graph():
-    plt.plot(t, int(umax.get())*vecsin(2*math.pi*f*t)+(int(umax.get())/10)*vecsin(6*math.pi*f*t)) # построение графика
+    plt.plot(t, float(umax.get())*vecsin(2*math.pi*f*t)+(float(umax.get())/10)*vecsin(6*math.pi*f*t)) # построение графика
     plt.show()
 
 def func(t):
-    return ((int(umax.get())*math.sin(2*math.pi*f*t)+(int(umax.get())/10)*math.sin(6*math.pi*f*t))**2)/int(res.get())
+    return ((float(umax.get())*math.sin(2*math.pi*f*t)+(float(umax.get())/10)*math.sin(6*math.pi*f*t))**2)/float(res.get())
 
 def show_int_result():
-    messagebox.showinfo("Результат вычисления", integrate.quad(func, 0, int(time.get())));
+    messagebox.showinfo("Результат вычисления", integrate.quad(func, 0, float(time.get()), limit = 500));
 
 root = Tk()
 root.title("GUI на Python")
 root.geometry("300x400")
 
-time = IntVar()
-res = IntVar()
-umax = IntVar()
+time = StringVar()
+res = StringVar()
+umax = StringVar()
 
 time_entry = Entry(textvariable=time)
 time_entry.grid(row = 1, column = 1, columnspan = 1)
